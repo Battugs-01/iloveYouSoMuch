@@ -10,7 +10,7 @@ function yes() {
   text.style.display = "block";
   buttons.style.display = "none";
   question.textContent =
-    "Yey! Let's wait outside your entrance at 19:00 on October 15th.";
+    "Yey! Let's wait outside your entrance at 07:00 on Sunday 29th.";
   gif.src = "assets/giphy.gif";
   createHearts(100);
 }
@@ -19,8 +19,7 @@ function fucckingLastWord() {
   body.style.backgroundColor = "black";
   text.style.display = "block";
   buttons.style.display = "none";
-  question.textContent =
-    "За ойлголоо. Одоо олон үг хэлэхгүй ээ чи бүгдийг үгүй гэж дарсан болохоор үүнийг уншиж байгаа байх би гэхдээ сүүлийн удаа очино 15нд 19цагаас гарч ирсэн ч ирээгүй ч чин сэтгэлээсээ хүлээе.";
+  question.textContent = "My name is";
   gif.src = "assets/broker2.webp";
 }
 
@@ -43,8 +42,23 @@ var gifs = [
 
 var noCount = 0;
 
+// function no() {
+//   if (noCount != 5) {
+//     noBtn.style.position = "absolute";
+//     var newX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+//     var newY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+//     noBtn.style.left = newX + "px";
+//     noBtn.style.top = newY + "px";
+//     noBtn.textContent = phrase[noCount];
+//     gif.src = gifs[noCount];
+//     noCount++;
+//   } else {
+//     fucckingLastWord();
+//   }
+// }
+
 function no() {
-  if (noCount != 5) {
+  if (noCount < 5) {
     noBtn.style.position = "absolute";
     var newX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
     var newY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
@@ -53,8 +67,22 @@ function no() {
     noBtn.textContent = phrase[noCount];
     gif.src = gifs[noCount];
     noCount++;
-  } else {
-    fucckingLastWord();
+
+    if (noCount === 5) {
+      // Disable the click
+      noBtn.onclick = null;
+
+      // Change text one last time
+      noBtn.textContent = "Goodbye then...";
+
+      // Add mouseover movement
+      noBtn.addEventListener("mouseover", () => {
+        const moveX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const moveY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        noBtn.style.left = moveX + "px";
+        noBtn.style.top = moveY + "px";
+      });
+    }
   }
 }
 
